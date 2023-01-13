@@ -93,8 +93,10 @@ for diode in [False, True]:
             off = diode_off if diode else 0
             for cap, outline in cap_variants(off):
                 var = ("D" if diode else "") + ("R" if rev else "") + ("H" if hotswap else "") + cap
-                name = "pg1232" + ("-" + var if var else var)
-                model_path = os.path.normpath(os.path.dirname(__file__) + "/models/pg1232.step")
+                name = "pg1232" + (f"-{var}" if var else var)
+                model_path = os.path.normpath(
+                    f"{os.path.dirname(__file__)}/models/pg1232.step"
+                )
                 footprint("pg1232", name, diode, core(off) + pins(off, rev, diode, hotswap)
                                 + cap_outline(outline)
                                 + (diode_pads(rev) if diode else [])

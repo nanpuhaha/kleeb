@@ -13,7 +13,11 @@ def footprint(dir: str, name: str, smd: bool, entities: list):
     if smd:
         fp.setAttribute("smd")
     fp.extend(entities)
-    KicadFileHandler(fp).writeFile(os.path.normpath(os.path.dirname(__file__) + f"/{dir}.pretty/{name}.kicad_mod"))
+    KicadFileHandler(fp).writeFile(
+        os.path.normpath(
+            f"{os.path.dirname(__file__)}/{dir}.pretty/{name}.kicad_mod"
+        )
+    )
 
 def vecadd(a, b):
     return (a[0] + b[0], a[1] + b[1])
